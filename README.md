@@ -62,3 +62,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Mis Comentarios
+
+- Parar servidor mysql:
+    sudo service mysql sttop
+
+composer create-project laravel/laravel <proyecto>
+npm install
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+
+php artisan serve
+npm run dev
+
+php artisan migrate
+php artisan make:migration add_username_to_users_table
