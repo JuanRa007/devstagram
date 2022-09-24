@@ -25,6 +25,6 @@ class LoginController extends Controller
         }
 
         // Validado correctamente.
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
