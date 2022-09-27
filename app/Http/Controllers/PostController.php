@@ -21,7 +21,11 @@ class PostController extends Controller
     {
 
         // Obtenesmos, tras enlazar ambos modelos, los posts del usuario.
-        $posts = Post::where('user_id', $user->id)->get();
+        // $posts = Post::where('user_id', $user->id)->get();
+        // Igual pero con paginación.
+        $posts = Post::where('user_id', $user->id)->paginate(2);
+        // Otro tipo de paginación.
+        // $posts = Post::where('user_id', $user->id)->simplePaginate(2);
 
         return view('dashboard', [
             'user' => $user,
@@ -67,5 +71,12 @@ class PostController extends Controller
         // ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post
+        ]);
     }
 }
