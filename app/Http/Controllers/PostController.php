@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\File;
 use function PHPUnit\Framework\returnSelf;
 
 class PostController extends Controller
@@ -79,5 +80,28 @@ class PostController extends Controller
             'post' => $post,
             'user' => $user
         ]);
+    }
+
+    public function destroy(Post $post)
+    {
+        // En vez de "IF" usaremos POLICY
+        // if ($post->user_id === auth()->user()->id) {
+        //     dd('Es el mismo usuario');
+        // } else {
+        //     dd('Es OTRO usuario');
+        // }
+
+        $this->authorize('delete', $post);
+
+        // Borramos
+        $post->delete();
+
+        // Eliminar imagen
+        $image_path = public_path('uploads/' . $post->imagen);
+        if (File::exits($image_path)) {
+            unlink($image_path);
+        }
+
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
