@@ -21,3 +21,9 @@ npm run dev.
 
 php artisan migrate.
 php artisan make:migration add_username_to_users_table.
+
+
+## Dudas y Posibles errores.
+
+Cuando las rutas no funcionen bien, lanzar el comando:
+php artisan route:cache

@@ -24,7 +24,7 @@ class PostController extends Controller
         // Obtenesmos, tras enlazar ambos modelos, los posts del usuario.
         // $posts = Post::where('user_id', $user->id)->get();
         // Igual pero con paginación.
-        $posts = Post::where('user_id', $user->id)->paginate(2);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(2);
         // Otro tipo de paginación.
         // $posts = Post::where('user_id', $user->id)->simplePaginate(2);
 

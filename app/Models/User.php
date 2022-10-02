@@ -55,4 +55,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+
+    // Motivado por la tabla Followers y tener dos usuarios a lav vez:
+    //  -- Usuario del Muro.
+    //  -- Usuario a quien va a seguir.
+    //
+    // Almacena los seguidores de un usuario
+    public function followers()
+    {
+        // Podemos tener muchos seguidores
+        // 'followers' --> Migrate
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    // Almacenar los que seguimos.
+    public function followings()
+    {
+        // Podemos tener muchos seguidores
+        // 'followers' --> Migrate
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    // Comprobar si un usuario sigue a otro.
+    public function siguiendo(User $user)
+    {
+        return $this->followers->contains($user->id);
+    }
 }
