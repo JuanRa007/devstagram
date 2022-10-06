@@ -22,6 +22,9 @@ npm run dev.
 php artisan migrate.
 php artisan make:migration add_username_to_users_table.
 
+Instalar: LiveWire:
+composer require livewire/livewire
+
 
 ## Dudas y Posibles errores.
 
