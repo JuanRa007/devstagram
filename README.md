@@ -30,3 +30,7 @@ composer require livewire/livewire
 
 Cuando las rutas no funcionen bien, lanzar el comando:
 php artisan route:cache
+
+En producción, la carga de imágenes no funcionaba y hubo que instalar:
+composer require ext-gd
+
